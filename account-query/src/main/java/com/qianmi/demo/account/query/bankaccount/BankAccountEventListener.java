@@ -40,7 +40,6 @@ public class BankAccountEventListener {
     @EventHandler
     public void on(BankAccountCreatedEvent event) {
         repository.save(new BankAccountEntry(event.getId(), 0, event.getOverdraftLimit()));
-
         broadcastUpdates();
     }
 
@@ -48,9 +47,7 @@ public class BankAccountEventListener {
     public void on(MoneyAddedEvent event) {
         BankAccountEntry bankAccountEntry = repository.findOneByAxonBankAccountId(event.getBankAccountId());
         bankAccountEntry.setBalance(bankAccountEntry.getBalance() + event.getAmount());
-
         repository.save(bankAccountEntry);
-
         broadcastUpdates();
     }
 
@@ -58,9 +55,7 @@ public class BankAccountEventListener {
     public void on(MoneySubtractedEvent event) {
         BankAccountEntry bankAccountEntry = repository.findOneByAxonBankAccountId(event.getBankAccountId());
         bankAccountEntry.setBalance(bankAccountEntry.getBalance() - event.getAmount());
-
         repository.save(bankAccountEntry);
-
         broadcastUpdates();
     }
 

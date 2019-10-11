@@ -1,0 +1,51 @@
+axon:
+  amqp:
+    exchange: amq.fanout
+  distributed:
+    enabled: true
+
+#eureka
+eureka:
+  client:
+    fetch-registry: true
+    healthcheck:
+      enabled: true
+    service-url:
+      default-zone: http://localhost:8761/eureka/
+  instance:
+    hostname: localhost
+    lease-expiration-duration-in-seconds: 30
+    lease-renewal-interval-in-seconds: 10
+    prefer-ip-address: true
+
+spring:
+  datasource:
+    initial-size: 2
+    password: root
+    sql-script-encoding: UTF-8
+    url: jdbc:mysql://127.0.0.1:3306/accountdemo?autoReconnect=true&useSSL=false
+    username: root
+
+  #h2
+  h2:
+    console:
+      enabled: false
+
+  #jpa
+  jpa:
+    database: MYSQL
+    database-platform: 'org.hibernate.dialect.MySQL5Dialect  '
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+    show-sql: true
+
+  #rabbitmq
+  rabbitmq:
+    host: localhost
+    password: guest
+    port: 5672
+    username: guest

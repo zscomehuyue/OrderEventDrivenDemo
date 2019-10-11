@@ -24,6 +24,9 @@ import org.axonframework.eventhandling.EventHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+/**
+ * FIXME  为何要在query里面实现保存相关的事件处理器？？？
+ */
 @Component
 public class BankTransferEventListener {
 
@@ -37,9 +40,9 @@ public class BankTransferEventListener {
     @EventHandler
     public void on(BankTransferCreatedEvent event) {
         repository.save(new BankTransferEntry(event.getBankTransferId(),
-                                              event.getSourceBankAccountId(),
-                                              event.getDestinationBankAccountId(),
-                                              event.getAmount()));
+                event.getSourceBankAccountId(),
+                event.getDestinationBankAccountId(),
+                event.getAmount()));
     }
 
     @EventHandler

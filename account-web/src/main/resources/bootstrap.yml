@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: ${name:accountDemo}
+  profiles:
+    active: ${profile:dev}
+
+server:
+  port: ${port:8181}
+
+#基本信息
+info:
+  application: ${spring.application.name}
+  description: accountDemo
+  version: v1.0
+  author: zscome
+  debug: true
+
+management:
+  security:
+    enabled: false
+

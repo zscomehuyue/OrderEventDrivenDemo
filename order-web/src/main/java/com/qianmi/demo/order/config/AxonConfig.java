@@ -16,21 +16,11 @@
 
 package com.qianmi.demo.order.config;
 
-import com.qianmi.demo.order.CreateOrderSaga;
 import com.qianmi.demo.order.Order;
-import com.qianmi.demo.order.OrderCommandHandler;
-import org.axonframework.commandhandling.model.GenericJpaRepository;
 import org.axonframework.commandhandling.model.Repository;
-import org.axonframework.common.jpa.ContainerManagedEntityManagerProvider;
-import org.axonframework.common.jpa.EntityManagerProvider;
 import org.axonframework.common.transaction.TransactionManager;
-import org.axonframework.config.SagaConfiguration;
-import org.axonframework.eventhandling.EventBus;
-import org.axonframework.eventhandling.SimpleEventBus;
 import org.axonframework.eventsourcing.EventSourcingRepository;
 import org.axonframework.eventsourcing.eventstore.EventStore;
-import org.axonframework.serialization.Serializer;
-import org.axonframework.spring.config.AxonConfiguration;
 import org.axonframework.spring.messaging.unitofwork.SpringTransactionManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -54,7 +44,7 @@ public class AxonConfig {
 
 
 
-    @Bean()
+    @Bean
     public Repository<Order> repository(EventStore eventStore){
         return new EventSourcingRepository<>(Order.class, eventStore);
     }

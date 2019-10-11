@@ -5,9 +5,7 @@ import org.axonframework.eventhandling.EventHandler;
 import org.axonframework.spring.stereotype.Aggregate;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 import static org.axonframework.commandhandling.model.AggregateLifecycle.apply;
 
