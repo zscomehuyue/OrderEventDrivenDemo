@@ -12,21 +12,23 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
 import org.springframework.web.client.RestTemplate;
 
 import javax.transaction.Transactional;
 
 import static org.slf4j.LoggerFactory.getLogger;
 
-@Profile("distributed")
+//@Profile("dev")
 @EnableDiscoveryClient
 @Configuration
 public class DistributedConfiguration {
+
     // Example function providing a Spring Cloud Connector
     private static final Logger LOGGER = getLogger(DistributedConfiguration.class);
+
     @Value("${axon.amqp.exchange}")
     private String exchangeName;
+
     @Bean
     public Queue queue(){
         return new Queue("orderqueue", true);
@@ -46,8 +48,8 @@ public class DistributedConfiguration {
     @Bean
     public SpringAMQPMessageSource queueMessageSource(Serializer serializer){
         return new SpringAMQPMessageSource(serializer){
-            @RabbitListener(queues = "orderqueue")
             @Override
+            @RabbitListener(queues = "orderqueue")
             @Transactional
             public void onMessage(Message message, Channel channel) throws Exception {
                 LOGGER.debug("Message received: "+message.toString());
@@ -61,6 +63,8 @@ public class DistributedConfiguration {
         return new RestTemplate();
     }
 
+    //FIXME 还有哪些配置？
+    // 运作机制和流程；举例子
     @Bean
     public SagaConfiguration<CreateOrderSaga> orderSagaConfiguration(Serializer serializer){
         //sagaConfiguration.registerHandlerInterceptor(c->transactionManagingInterceptor());

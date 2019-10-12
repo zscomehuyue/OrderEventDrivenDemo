@@ -1,11 +1,11 @@
 spring:
   application:
-    name: ${name:orderDemo}
+    name: ${name:order}
   profiles:
     active: ${profile:dev}
 
 server:
-  port: ${port:8181}
+  port: ${port:8081}
 
 #基本信息
 info:

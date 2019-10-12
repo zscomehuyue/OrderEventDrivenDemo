@@ -81,11 +81,16 @@
             <version>0.3.0</version>
         </dependency>
 
-
         <dependency>
             <groupId>com.thoughtworks.xstream</groupId>
             <artifactId>xstream</artifactId>
             <version>1.4.9</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.suixingpay.starter</groupId>
+            <artifactId>suixingpay-starter-cat-aop</artifactId>
+            <version>3.0.5-SNAPSHOT</version>
         </dependency>
 
         <!-- 健康检查-->

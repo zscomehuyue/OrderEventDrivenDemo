@@ -27,28 +27,23 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.PlatformTransactionManager;
 
-
 @Configuration
 public class AxonConfig {
 
-
+    //FIXME HibernateJpaAutoConfiguration 自动配置的事务管理器
     @Autowired
     private PlatformTransactionManager transactionManager;
 
-
-
+    //FIXME AXON 事务管理器的实现；
     @Bean
     public TransactionManager axonTransactionManager() {
         return new SpringTransactionManager(transactionManager);
     }
 
-
-
+    //FIXME 实现，如何和jpa结合的；
     @Bean
     public Repository<Order> repository(EventStore eventStore){
         return new EventSourcingRepository<>(Order.class, eventStore);
     }
-
-
 
 }

@@ -18,3 +18,15 @@ endpoints:
 
 server:
   port: 8761 #HTTP(Tomcat) port
+
+spring:
+  application:
+    name: eureka
+
+suixingpay:
+  cat:
+    servers:
+      - 172.16.160.50 #cat服务器配置
+#      - 172.16.173.246 #cat服务器配置
+    base-package: com.qianmi.demo.order
+

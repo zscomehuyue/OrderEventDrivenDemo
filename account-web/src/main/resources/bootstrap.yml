@@ -1,6 +1,6 @@
 spring:
   application:
-    name: ${name:accountDemo}
+    name: ${name:account}
   profiles:
     active: ${profile:dev}
 
